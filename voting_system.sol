@@ -2,8 +2,10 @@
 pragma solidity ^0.8.18;
 
 contract ProposalContract {
+        uint256 private counter;
 
-        struct proposal {
+        
+        struct Proposal {
                 string title; // title for the proposal
                 string description;
                 uint256 approve;
@@ -13,8 +15,11 @@ contract ProposalContract {
                 bool current_states;
                 bool is_active;
         }
+        
+        mapping(uint256 => Proposal) proposal_history; // Recordings of previous proposals
 
-        // Recording previous proposal, indexing with a uint256 key value
-
-        mapping(uint256 => proposal) proposal_history;
+        function create(string calldata _title, string calldata _description, uint256 _total_vote_to_end) external {
+        counter += 1;
+        proposal_history[counter] = Proposal(_title, _description, 0, 0, 0, _total_vote_to_end, false, true);
+}
 }
