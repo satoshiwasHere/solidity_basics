@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
+// contract address at 0xd9145CCE52D386f254917e481eB44e9943F39138 
+
 contract proposalContract {
         address owner;
         uint256 private counter;
