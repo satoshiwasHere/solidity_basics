@@ -44,10 +44,6 @@ contract proposalContract {
                    _;
                 }
 
-        function isVoted(address _address) internal view returns (bool) {
-                return hasVoted[_address];
-                }
-
 
         function setOwner(address new_owner) external onlyOwner {
                 owner = new_owner;
@@ -101,7 +97,7 @@ contract proposalContract {
 
         function isVoted(address _address) public view returns (bool) {
                 for (uint i = 0; i < voted_addresses.length; i++) {
-                        if (voted_addresses[i] = _address) {
+                        if (voted_addresses[i] == _address) {
                                 return true;
                         }
                 }
@@ -112,7 +108,7 @@ contract proposalContract {
                 return  proposal_history[counter];
         }
 
-        function getProposal(uint256 number) external view returns (proposal_history) {
+        function getProposal(uint256 number) external view returns (proposal memory) {
                 return proposal_history[number];
         }
 }
